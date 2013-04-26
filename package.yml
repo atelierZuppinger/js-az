@@ -1,0 +1,18 @@
+name: AZ
+author: fingerflow
+current: 1.0.0
+tags: [CMS]
+license: MIT
+description: a2z CMS base scripts
+
+sources:
+  - Sources/az.js
+  - Sources/cms/cms.js
+  - Sources/cms/cms.form.js
+  - Sources/cms/cms.form.hidden_fields.js
+  - Sources/cms/cms.admin.js
+  - Sources/cms/admin/cms.admin.pannel.js
+  - Sources/cms/admin/cms.admin.users.js
+  - Sources/cms/admin/files/edit.js
+  - Sources/cms/admin/files/list.js
+  - Sources/cms/admin/files/upload.js
