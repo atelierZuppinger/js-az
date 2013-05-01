@@ -1,12 +1,12 @@
 /*
 ---
 
-name: CMS.Admin
+name: AZ.CMS.Admin
 description: 
 authors: AtelierZuppinger:@fingerflow
 provides: AZ.CMS.Admin
 requires:
-  - CMS
+  - AZ/AZ.CMS
 
 ...
 */

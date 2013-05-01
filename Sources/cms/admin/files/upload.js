@@ -1,12 +1,12 @@
 /*
 ---
 
-name: CMS.Admin.Files.Upload
+name: AZ.CMS.Admin.Files.Upload
 description: manage files
 authors: AtelierZuppinger:@fingerflow
 provides: AZ.CMS.Admin.Files
 requires:
-  - AZ/CMS.Admin.Files
+  - AZ/AZ.CMS.Admin.Files
 
 ...
 */

@@ -1,12 +1,12 @@
 /*
 ---
 
-name: CMS.Admin.Pannel
+name: AZ.CMS.Admin.Pannel
 description: manage admin panels.
 authors: AtelierZuppinger:@fingerflow
 provides: AZ.CMS.Admin.Pannel
 requires:
-  - AZ/CMS.Admin
+  - AZ/AZ.CMS.Admin
 
 ...
 */

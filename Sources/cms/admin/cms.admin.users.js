@@ -1,12 +1,12 @@
 /*
 ---
 
-name: CMS.Admin.Users
+name: AZ.CMS.Admin.Users
 description: Don't do anything yet
 authors: AtelierZuppinger:@fingerflow
 provides: AZ.CMS.Admin.Pannel
 requires:
-  - AZ/CMS.Admin
+  - AZ/AZ.CMS.Admin
 
 ...
 */

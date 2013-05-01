@@ -1,12 +1,12 @@
 /*
 ---
 
-name: CMS.Form
+name: AZ.CMS.Form
 description: manage edit forms of admin panel
 authors: AtelierZuppinger:@fingerflow
 provides: AZ.CMS.Form
 requires:
-  - AZ/CMS.Form
+  - AZ/AZ.CMS
   - Form.Validator
   - Request.JSON
   - Input.Handlers

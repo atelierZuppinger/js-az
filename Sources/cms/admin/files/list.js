@@ -1,12 +1,12 @@
 /*
 ---
 
-name: CMS.Admin.Files
+name: AZ.CMS.Admin.Files
 description: manage files
 authors: AtelierZuppinger:@fingerflow
 provides: AZ.CMS.Admin.Files
 requires:
-  - AZ/CMS.Admin.Pannel
+  - AZ/AZ.CMS.Admin.Pannel
 
 ...
 */
