@@ -4,7 +4,7 @@
 name: AZ.CMS.Admin.Users
 description: Don't do anything yet
 authors: AtelierZuppinger:@fingerflow
-provides: AZ.CMS.Admin.Pannel
+provides: AZ.CMS.Admin.Users
 requires:
   - AZ/AZ.CMS.Admin
 
