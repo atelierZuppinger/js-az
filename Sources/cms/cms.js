@@ -4,9 +4,9 @@
 name: AZ.CMS
 description: manages CMS behavior. Init panel and load plugin scripts
 authors: AtelierZuppinger:@fingerflow
-provides: AZ.CMS
+provides: [AZ.CMS]
 requires:
-  - AZ
+  - AZ/AZ
 
 ...
 */
