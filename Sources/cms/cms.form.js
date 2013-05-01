@@ -7,7 +7,7 @@ authors: AtelierZuppinger:@fingerflow
 provides: AZ.CMS.Form
 requires:
   - AZ/AZ.CMS
-  - Form.Validator
+  - More/Form.Validator
   - Request.JSON
   - Input.Handlers
 
