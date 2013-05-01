@@ -1,3 +1,16 @@
+/*
+---
+
+name: CMS.Admin.Files.Upload
+description: manage files
+authors: AtelierZuppinger:@fingerflow
+provides: AZ.CMS.Admin.Files
+requires:
+  - AZ/CMS.Admin.Files
+
+...
+*/
+
 AZ.CMS.Admin.Files.Upload = new Class({
 
 	options: {

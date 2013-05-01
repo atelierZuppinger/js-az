@@ -1,12 +1,14 @@
 /*
 ---
-name: AZ/CMS.Form.HiddenFields
+
+name: CMS.Form.HiddenFields
 description: extends CMS.Form to provide a hide method on fields
 authors: AtelierZuppinger:@fingerflow
 provides: AZ.CMS.Form.HiddenFields
 requires:
   - AZ/CMS.Form
-..
+
+...
 */
 
 AZ.CMS.Form.HiddenFields = new Class({

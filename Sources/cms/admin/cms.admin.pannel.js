@@ -1,12 +1,14 @@
 /*
 ---
-name: AZ/CMS/admin/Pannel
+
+name: CMS.Admin.Pannel
 description: manage admin panels.
 authors: AtelierZuppinger:@fingerflow
 provides: AZ.CMS.Admin.Pannel
 requires:
-  - AZ/CMS.admin
-..
+  - AZ/CMS.Admin
+
+...
 */
 AZ.CMS.Admin.Pannel = new Class({
 	

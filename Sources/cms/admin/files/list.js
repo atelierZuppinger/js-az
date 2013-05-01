@@ -1,3 +1,15 @@
+/*
+---
+
+name: CMS.Admin.Files
+description: manage files
+authors: AtelierZuppinger:@fingerflow
+provides: AZ.CMS.Admin.Files
+requires:
+  - AZ/CMS.Admin.Pannel
+
+...
+*/
 AZ.CMS.Admin.Files = new Class({
 	
 	options: {

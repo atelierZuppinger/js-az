@@ -1,6 +1,7 @@
 /*
 ---
-name: AZ/CMS.Form
+
+name: CMS.Form
 description: manage edit forms of admin panel
 authors: AtelierZuppinger:@fingerflow
 provides: AZ.CMS.Form
@@ -9,7 +10,8 @@ requires:
   - Form.Validator
   - Request.JSON
   - Input.Handlers
-..
+
+...
 */
 
 AZ.CMS.Form = new Class({

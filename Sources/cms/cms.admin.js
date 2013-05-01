@@ -1,12 +1,14 @@
 /*
 ---
-name: AZ.CMS.Admin
+
+name: CMS.Admin
 description: 
 authors: AtelierZuppinger:@fingerflow
 provides: AZ.CMS.Admin
 requires:
   - CMS
-..
+
+...
 */
 
 AZ.CMS.Admin = new Class({

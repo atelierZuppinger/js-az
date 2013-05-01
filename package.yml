@@ -14,6 +14,5 @@ sources:
   - "Sources/cms/cms.admin.js"
   - "Sources/cms/admin/cms.admin.pannel.js"
   - "Sources/cms/admin/cms.admin.users.js"
-  - "Sources/cms/admin/files/edit.js"
   - "Sources/cms/admin/files/list.js"
   - "Sources/cms/admin/files/upload.js"

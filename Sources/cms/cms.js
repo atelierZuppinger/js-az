@@ -1,12 +1,14 @@
 /*
 ---
-name: AZ/CMS
+
+name: CMS
 description: manages CMS behavior. Init panel and load plugin scripts
 authors: AtelierZuppinger:@fingerflow
 provides: AZ.CMS
 requires:
   - AZ
-..
+
+...
 */
 
 AZ.CMS = new Class({
