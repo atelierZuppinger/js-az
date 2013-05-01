@@ -9,7 +9,7 @@ requires:
   - AZ/AZ.CMS
   - More/Form.Validator
   - Request.JSON
-  - Input.Handlers
+  - Input/Input.Handlers
 
 ...
 */
