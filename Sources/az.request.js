@@ -57,7 +57,9 @@ AZ.Request = new Class({
 		notifications.each( function(notification){
 			if (notification.options.type == 'alert') {
 				this.pending = false;
-				this.notification.alert( notification.options.level, notification.options.message );
+				this.notification.alert( notification.options.level, notification.options.message, {
+					duration: 2500
+				});
 			} else {
 				this.notification.confirm(notification.options.level, notification.options.message, {
 					onConfirm: reSend,
@@ -79,7 +81,7 @@ AZ.Request = new Class({
 		if (!this.pending){
 			this.parent(options);
 		} else {
-
+			console.log('bump');
 		}
 	},
 
