@@ -17,5 +17,5 @@ provides: [AZ]
 
 AZ = {};
 
-Date.defineParser( "%d/%m/%Y" );
+Date.defineParser( "%d %m %Y" );
 Locale.use('fr-FR');
