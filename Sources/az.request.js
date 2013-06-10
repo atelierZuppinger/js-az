@@ -25,10 +25,8 @@ AZ.Request = new Class({
 	},
 	
 	initialize: function(options){
-		this.notification = new Roar({
-			position: 'upperRight',
-			duration: 50000
-		});
+		this.notification = AZ.Notification;
+		this.pending = false;
 		this.parent(options);
 	},
 
@@ -57,44 +55,38 @@ AZ.Request = new Class({
 		}).bind(this);
 
 		notifications.each( function(notification){
-			
-			if (notification.options.type == 'alert')
+			if (notification.options.type == 'alert') {
+				this.pending = false;
 				this.notification.alert( notification.options.level, notification.options.message );
-			else 
+			} else {
 				this.notification.confirm(notification.options.level, notification.options.message, {
-					onConfirm: reSend
+					onConfirm: reSend,
+					duration: false,
+					onHide: (function(){
+						this.pending = false;
+					}).bind(this),
+					onShow: (function(body, idx){
+						this.pending = body;
+					}).bind(this)
 				});
+			}
 
 		}, this);
 
-	}, 
+	},
+
+	send: function(options){
+		if (!this.pending){
+			this.parent(options);
+		} else {
+
+		}
+	},
 
 	reSend: function(confirmed, params){
+		this.pending = false;
 		params.confirmed = confirmed;
 		this.send(JSON.encode(params));
 	}
 	
-});
-
-window.addEvent('load', function(){
-	var result = document.id('result'),
-		sendrequest = document.id('sendrequest'),
-		success = function(response){
-			console.log('success √');
-		},
-		error = function(response){
-			console.log('error X');
-		},
-		request = new AZ.Request({
-			url: '/ajax/notification',
-			onSuccess: success,
-			onError: error
-		});
-
-	sendrequest.addEvent('click', function(){
-		request.send(JSON.encode({
-			param: 1
-		}));
-	})
-
 });
