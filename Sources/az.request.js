@@ -20,36 +20,20 @@ AZ.Request = new Class({
 
 	Extends: Request.JSON,
 
-	Binds: ['queryEnd', 'queryStart'],
+	Binds: ['queryEnd', 'queryStart', 'onComplete'],
 	
-	options: {/*
-		onError: function(){},
-	*/
-	},
 
 	pendingQuery: false,
 	
 	initialize: function(options){
 		this.notification = AZ.Notification;
+		this.addEvent('complete', this.onComplete);
 		this.parent(options);
 	},
 
-	onSuccess: function(response, xml){
-
-		if (response.success)
-			this.parent(response, xml);
-		else
-			this.onError(response, xml);
-
+	onComplete: function(response){
 		if (response.notifications)
 			this.triggerNotifications(response.notifications, response.params);
-
-	},
-
-	onError: function(response, xml){
-
-		this.fireEvent('error', arguments);
-
 	},
 
 	triggerNotifications: function(notifications, params){
@@ -62,7 +46,7 @@ AZ.Request = new Class({
 			if (notification.options.type == 'alert') {
 				this.notification.alert( notification.options.level, notification.options.message, {
 					duration: 2500,
-					className: 'roarnotification alert',
+					className: 'roar notification alert',
 					onShow: this.queryStart,
 					onHide: this.queryEnd
 				});
@@ -70,7 +54,7 @@ AZ.Request = new Class({
 				this.notification.confirm(notification.options.level, notification.options.message, {
 					onConfirm: reSend,
 					duration: false,
-					className: 'notification confirm',
+					className: 'roar notification confirm',
 					onHide: this.queryEnd,
 					onShow: this.queryStart
 				});
@@ -94,7 +78,12 @@ AZ.Request = new Class({
 
 	reSend: function(confirmed, params){
 		this.queryEnd();
-		params.confirmed = confirmed;
+		if(params)
+			params.confirmed = confirmed;
+		else
+			params = {
+				confirmed: confirmed
+			};
 		this.send(JSON.encode(params));
 	},
 
