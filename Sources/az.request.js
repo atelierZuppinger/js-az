@@ -7,6 +7,7 @@ authors: AtelierZuppinger:@fingerflow
 provides: [AZ.Request]
 requires:
   - AZ/AZ
+  - Class/Class.Binds
   - Core/Class
   - Core/Element.Event
   - Core/Request.JSON
@@ -18,15 +19,18 @@ requires:
 AZ.Request = new Class({
 
 	Extends: Request.JSON,
+
+	Binds: ['queryEnd', 'queryStart'],
 	
 	options: {/*
 		onError: function(){},
 	*/
 	},
+
+	pendingQuery: false,
 	
 	initialize: function(options){
 		this.notification = AZ.Notification;
-		this.pending = false;
 		this.parent(options);
 	},
 
@@ -56,20 +60,19 @@ AZ.Request = new Class({
 
 		notifications.each( function(notification){
 			if (notification.options.type == 'alert') {
-				this.pending = false;
 				this.notification.alert( notification.options.level, notification.options.message, {
-					duration: 2500
+					duration: 2500,
+					className: 'roarnotification alert',
+					onShow: this.queryStart,
+					onHide: this.queryEnd
 				});
 			} else {
 				this.notification.confirm(notification.options.level, notification.options.message, {
 					onConfirm: reSend,
 					duration: false,
-					onHide: (function(){
-						this.pending = false;
-					}).bind(this),
-					onShow: (function(body, idx){
-						this.pending = body;
-					}).bind(this)
+					className: 'notification confirm',
+					onHide: this.queryEnd,
+					onShow: this.queryStart
 				});
 			}
 
@@ -78,17 +81,29 @@ AZ.Request = new Class({
 	},
 
 	send: function(options){
-		if (!this.pending){
+
+		if (!this.pendingQuery){
 			this.parent(options);
 		} else {
-			console.log('bump');
+			this.pendingQuery.addClass('reveal');
+			(function(){
+				this.pendingQuery.removeClass('reveal');
+			}).delay(1000, this);
 		}
 	},
 
 	reSend: function(confirmed, params){
-		this.pending = false;
+		this.queryEnd();
 		params.confirmed = confirmed;
 		this.send(JSON.encode(params));
+	},
+
+	queryEnd: function(){
+		this.pendingQuery = false;
+	},
+
+	queryStart: function(body, idx){
+		this.pendingQuery = body;
 	}
 	
 });
