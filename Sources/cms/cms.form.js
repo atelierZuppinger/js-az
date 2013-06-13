@@ -24,8 +24,7 @@ AZ.CMS.Form = new Class({
 	
 	initialize: function(){
 		var cmsForm = document.id('cms-form'),
-				cmsAdmin = document.id('admin');
-		
+			cmsAdmin = document.id('admin');
 		
 		if( cmsForm ){
 			this.initialize_edit_form(cmsForm);
@@ -43,19 +42,17 @@ AZ.CMS.Form = new Class({
 		this.formValidator = new Form.Validator(container,{
 			onFormValidate: this.submit
 		});
-		
-		
-		this.submitRequest = new Request.JSON({
+
+		this.submitRequest = new AZ.Request({
 			url: container.get('action'),
-			onComplete: this.saveSuccess,
-			onRequest: AZ.Spinner.show
+			onSuccess: this.saveSuccess
 		});
 		
 		if( this.deleteButton ){
 			
-			this.deleteRequest = new Request.JSON({
+			this.deleteRequest = new AZ.Request({
 				url: this.deleteButton.get('data-href'),
-				onComplete: this.deleteSuccess
+				onSuccess: this.deleteSuccess
 			});
 			
 			this.deleteButton.addEvent('click', this.deleteElement );
@@ -93,15 +90,8 @@ AZ.CMS.Form = new Class({
 	
 	saveSuccess: function( response ){
 		
-		if( response.success ){
-			window.location.href=response.redirect;
-		} else {
-			response.notification.each( function(notification){
-				AZ.Notification.alert( notification.options.level, notification.options.message );
-			});
-			
-		}
-		
+		window.location.href=response.redirect;
+	
 	},
 	
 	deleteSuccess: function( response ){
