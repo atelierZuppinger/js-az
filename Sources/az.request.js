@@ -20,8 +20,11 @@ AZ.Request = new Class({
 
 	Extends: Request.JSON,
 
+	Options: {
+		/*onError*/
+	},
+
 	Binds: ['queryEnd', 'queryStart', 'onComplete'],
-	
 
 	pendingQuery: false,
 	
@@ -29,6 +32,17 @@ AZ.Request = new Class({
 		this.notification = AZ.Notification;
 		this.addEvent('complete', this.onComplete);
 		this.parent(options);
+	},
+
+	onSuccess: function(text, xml){
+		if(text.success)
+			this.parent(text, xml);
+		else
+			this.onError(text, xml);
+	},
+
+	onError: function(){
+		this.fireEvent('complete', arguments).fireEvent('error', arguments).callChain();
 	},
 
 	onComplete: function(response){
