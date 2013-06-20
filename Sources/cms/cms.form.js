@@ -45,7 +45,9 @@ AZ.CMS.Form = new Class({
 
 		this.submitRequest = new AZ.Request({
 			url: container.get('action'),
-			onSuccess: this.saveSuccess
+			onSuccess: this.saveSuccess,
+			onRequest: AZ.Spinner.show,
+			onComplete: AZ.Spinner.hide
 		});
 		
 		if( this.deleteButton ){
