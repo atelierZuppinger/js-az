@@ -47,7 +47,8 @@ AZ.CMS.Form = new Class({
 			url: container.get('action'),
 			onSuccess: this.saveSuccess,
 			onRequest: AZ.Spinner.show,
-			onComplete: AZ.Spinner.hide
+			onError: AZ.Spinner.hide,
+			onFailure: AZ.Spinner.hide
 		});
 		
 		if( this.deleteButton ){
