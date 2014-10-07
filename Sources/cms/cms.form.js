@@ -6,6 +6,7 @@ description: manage edit forms of admin panel
 authors: AtelierZuppinger:@fingerflow
 provides: AZ.CMS.Form
 requires:
+  - Core/DOMReady
   - AZ/AZ.CMS
   - More/Form.Validator
   - Request.JSON
