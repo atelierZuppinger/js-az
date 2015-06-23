@@ -55,13 +55,15 @@ AZ.Request = new Class({
 		var reSend = (function(confirmed){
 			this.reSend(confirmed, params);
 		}).bind(this);
-
 		notifications.each( function(notification){
 			if (notification.options.type == 'alert') {
 				this.notification.alert( notification.options.level, notification.options.message, {
 					duration: 2500,
 					className: 'roar notification alert',
-					onShow: this.queryStart,
+					onShow: (function(body, id){
+						this.queryStart(body, id);
+						this.highLightField(notification.trigger.field_name);
+					}).bind(this),
 					onHide: this.queryEnd
 				});
 			} else {
@@ -70,7 +72,9 @@ AZ.Request = new Class({
 					duration: false,
 					className: 'roar notification confirm',
 					onHide: this.queryEnd,
-					onShow: this.queryStart
+					onShow: (function(body, id){
+						this.queryStart(body, id);
+					}).bind(this)
 				});
 			}
 
@@ -80,6 +84,7 @@ AZ.Request = new Class({
 
 	send: function(options){
 
+		$$('.cms-field').removeClass('field-error');
 		if (!this.pendingQuery){
 			this.parent(options);
 		} else {
@@ -107,6 +112,10 @@ AZ.Request = new Class({
 
 	queryStart: function(body, idx){
 		this.pendingQuery = body;
+	},
+
+	highLightField: function(fieldName) {
+		$$('.cms-field.'+fieldName).addClass('field-error');
 	}
 	
 });
